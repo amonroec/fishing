@@ -1,0 +1,12 @@
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~sweetalert2/src/sweetalert2';
+@import '~dropify/dist/css/dropify.css';
+/*@import '~fontawesome/scss/fontawesome.scss';
+@import '~fontawesome/scss/solid.scss';
+@import '~fontawesome/scss/brands.scss';*/
+
+@import 'elements/card';
+@import 'elements/navbar';
+@import 'elements/buttons';
+@import 'elements/transitions';
