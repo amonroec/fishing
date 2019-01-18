@@ -1,23 +1,20 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-white">
     <div class="container">
-      <router-link to="/" class="navbar-brand brand-image">
-        <img style="height:48px;" src="./../../images/mpo_white_600_200.png" />
-      </router-link>
-      <div id="navbarToggler" class="navbar-collapse">
+      <!-- <router-link style="float:left;" to="/" class="navbar-brand brand-image">
+        Home
+      </router-link> -->
+      <div id="navbarToggler" style="float:left;" class="navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <template>
-            <li class="nav-item">
+            <li v-if="user" class="nav-item">
               <router-link :to="{ name: 'home' }" class="dropdown-item">Home</router-link>
             </li>
-            <li class="nav-item">
-              <router-link to="/market_analysis_form" class="dropdown-item">Market Analysis Forms</router-link>
+            <li v-if="user" class="nav-item">
+              <router-link to="/rules" class="dropdown-item">Rules</router-link>
             </li>
-            <li class="nav-item">
-              <router-link to="/contact_us" class="dropdown-item">Contact Us</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/cart" class="dropdown-item">Cart</router-link>
+            <li v-if="user" class="nav-item">
+              <router-link to="/add_animal" class="dropdown-item">Add Animal</router-link>
             </li>
             <!-- Autenticated -->
             <li v-if="user" class="nav-item dropdown">
@@ -27,11 +24,6 @@
                 {{ user.name }}
               </a>
               <div class="dropdown-menu">
-                <router-link :to="{ name: 'myorders' }" class="dropdown-item">
-                  <fa icon="cog" fixed-width/>
-                  My Orders
-                </router-link>
-
                 <div class="dropdown-divider"/>
                 <a href="#" class="dropdown-item" @click.prevent="logout">
                   <fa icon="sign-out-alt" fixed-width/>
@@ -41,8 +33,11 @@
             </li>
             <!-- Guest -->
             <li v-else class="nav-item">
-              <router-link :to="{ name: 'login' }" class="dropdown-item pl-3" active-class="active">
+              <router-link :to="{ name: 'login' }" class="pl-3" active-class="active">
                 {{ $t('login') }}
+              </router-link>
+              <router-link :to="{ name: 'register' }" class="pl-3">
+                {{ $t('register') }}
               </router-link>
             </li>
           </template>
